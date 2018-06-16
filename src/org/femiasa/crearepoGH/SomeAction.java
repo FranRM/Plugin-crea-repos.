@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
@@ -45,8 +46,10 @@ public final class SomeAction implements ActionListener {
             //creamos un ficheiro para as credenciais de usuario e cargamolas no programa.
             gh1=GitHub.connectUsingPassword(user, pass);
             //conectamonos a git coas credenciais.
-            novorep("Testeando",gh1);
+            novorep("Tester",gh1);
             //creamos o repositorio.
+            sc.close();
+            JOptionPane.showMessageDialog(null,"Finalizado");
             
         }catch(FileNotFoundException fnfe1){
             System.out.println("error:"+fnfe1.getMessage());
@@ -55,7 +58,7 @@ public final class SomeAction implements ActionListener {
             user="0";
             pass="0";
         }
-        sc.close();
+        
     }
     /**
      * Método de creación de repositorios novos.
