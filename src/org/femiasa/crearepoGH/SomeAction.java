@@ -34,29 +34,19 @@ public final class SomeAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
     GitHub gh1 ;
-    Scanner sc=null;
-    File fich=null;
-    String user="0";
-    String pass="0";
         try{
-            fich=new File("user.txt");
-            sc=new Scanner(fich);
-            user=sc.nextLine();
-            pass=sc.nextLine();
+            
             //creamos un ficheiro para as credenciais de usuario e cargamolas no programa.
-            gh1=GitHub.connectUsingPassword(user, pass);
+            gh1=GitHub.connectUsingPassword(JOptionPane.showInputDialog("Introduce o user."), JOptionPane.showInputDialog("Introduce o pass."));
             //conectamonos a git coas credenciais.
             novorep(JOptionPane.showInputDialog("Introduza o nome do repo a crear."),gh1);
             //creamos o repositorio.
-            sc.close();
             JOptionPane.showMessageDialog(null,"Finalizado");
             
         }catch(FileNotFoundException fnfe1){
             System.out.println("error:"+fnfe1.getMessage());
         }catch(IOException ioe1){
             System.out.println("error:"+ioe1.getMessage());
-            user="0";
-            pass="0";
         }
         
     }
